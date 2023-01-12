@@ -20,6 +20,7 @@ import RenderStackBars from './RenderStackBars';
 import Rule from '../Components/lineSvg';
 import {bezierCommand, svgPath} from '../utils';
 import Svg, {Circle, Path, Rect, Text as CanvasText} from 'react-native-svg';
+import numeral from 'numeral';
 
 type PropTypes = {
   width?: number;
@@ -957,7 +958,7 @@ export const BarChart = (props: PropTypes) => {
                         marginBottom: stepHeight / -2,
                       },
                     ]}>
-                    {label}
+                    {numeral(label).format('0.0a')}
                   </Text>
                 </View>
               );
