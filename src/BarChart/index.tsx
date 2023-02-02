@@ -13,6 +13,7 @@ import {
   Text,
   ColorValue,
   ScrollView,
+  Dimensions,
 } from 'react-native';
 import {styles} from './styles';
 import RenderBars from './RenderBars';
@@ -872,7 +873,7 @@ export const BarChart = (props: PropTypes) => {
                         xAxisLength ||
                         (horizontal
                           ? props.width || Math.min(300, totalWidth)
-                          : (props.width || totalWidth) + 11),
+                          : (props.width || totalWidth + Dimensions.get('screen').width - yAxisLabelWidth) + 11),
                       dashWidth: dashWidth,
                       dashGap: dashGap,
                       type: xAxisType,
@@ -887,7 +888,7 @@ export const BarChart = (props: PropTypes) => {
                         rulesLength ||
                         (horizontal
                           ? props.width || Math.min(300, totalWidth)
-                          : (props.width || totalWidth) + 11),
+                          : (props.width || totalWidth + Dimensions.get('screen').width - yAxisLabelWidth) + 11),
                       dashWidth: dashWidth,
                       dashGap: dashGap,
                       type: rulesType,
@@ -1535,6 +1536,7 @@ export const BarChart = (props: PropTypes) => {
               yAxisSide === 'right' ? -yAxisLabelWidth + 10 : yAxisLabelWidth,
             position: 'absolute',
             bottom: stepHeight * -0.5 - 60 + xAxisThickness,
+            minWidth: Dimensions.get('screen').width - yAxisLabelWidth
           },
           props.width && {width: props.width - 11},
           horizontal && {width: props.width || Math.min(300, totalWidth)},

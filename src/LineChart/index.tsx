@@ -2004,7 +2004,9 @@ export const LineChart = (props: propTypes) => {
 
   const defaultReferenceConfig = {
     thickness: rulesThickness,
-    width: (props.width || totalWidth) + 11,
+    width:
+      (props.width ||
+        totalWidth + Dimensions.get('screen').width - yAxisLabelWidth) + 11,
     color: 'black',
     type: rulesType,
     dashWidth: dashWidth,
@@ -2022,7 +2024,9 @@ export const LineChart = (props: propTypes) => {
     ? {
         thickness: props.referenceLine1Config.thickness || rulesThickness,
         width:
-          (props.referenceLine1Config.width || props.width || totalWidth) + 11,
+          (props.referenceLine1Config.width ||
+            props.width ||
+            totalWidth + Dimensions.get('screen').width - yAxisLabelWidth) + 11,
         color: props.referenceLine1Config.color || 'black',
         type: props.referenceLine1Config.type || rulesType,
         dashWidth: props.referenceLine1Config.dashWidth || dashWidth,
@@ -2045,7 +2049,9 @@ export const LineChart = (props: propTypes) => {
     ? {
         thickness: props.referenceLine2Config.thickness || rulesThickness,
         width:
-          (props.referenceLine2Config.width || props.width || totalWidth) + 11,
+          (props.referenceLine2Config.width ||
+            props.width ||
+            totalWidth + Dimensions.get('screen').width - yAxisLabelWidth) + 11,
         color: props.referenceLine2Config.color || 'black',
         type: props.referenceLine2Config.type || rulesType,
         dashWidth: props.referenceLine2Config.dashWidth || dashWidth,
@@ -2068,7 +2074,9 @@ export const LineChart = (props: propTypes) => {
     ? {
         thickness: props.referenceLine3Config.thickness || rulesThickness,
         width:
-          (props.referenceLine3Config.width || props.width || totalWidth) + 11,
+          (props.referenceLine3Config.width ||
+            props.width ||
+            totalWidth + Dimensions.get('screen').width - yAxisLabelWidth) + 11,
         color: props.referenceLine3Config.color || 'black',
         type: props.referenceLine3Config.type || rulesType,
         dashWidth: props.referenceLine3Config.dashWidth || dashWidth,
@@ -2292,7 +2300,12 @@ export const LineChart = (props: propTypes) => {
                       config={{
                         thickness: xAxisThickness,
                         color: xAxisColor,
-                        width: xAxisLength || (props.width || totalWidth) + 11,
+                        width:
+                          xAxisLength ||
+                          (props.width ||
+                            totalWidth +
+                              Dimensions.get('screen').width -
+                              yAxisLabelWidth) + 11,
                         dashWidth: dashWidth,
                         dashGap: dashGap,
                         type: xAxisType,
@@ -2303,7 +2316,12 @@ export const LineChart = (props: propTypes) => {
                       config={{
                         thickness: rulesThickness,
                         color: rulesColor,
-                        width: rulesLength || (props.width || totalWidth) + 11,
+                        width:
+                          rulesLength ||
+                          (props.width ||
+                            totalWidth +
+                              Dimensions.get('screen').width -
+                              yAxisLabelWidth) + 11,
                         dashWidth: dashWidth,
                         dashGap: dashGap,
                         type: rulesType,
@@ -2389,7 +2407,12 @@ export const LineChart = (props: propTypes) => {
               style={[
                 styles.horizBar,
                 {
-                  width: (props.width ? props.width : totalWidth) + 15,
+                  width:
+                    (props.width
+                      ? props.width
+                      : totalWidth +
+                        Dimensions.get('screen').width -
+                        yAxisLabelWidth) + 15,
                 },
                 index === 0 && {marginTop: stepHeight / 2},
                 yAxisSide === 'right' && {transform: [{rotateY: '180deg'}]},
@@ -2416,7 +2439,12 @@ export const LineChart = (props: propTypes) => {
                     config={{
                       thickness: rulesThickness,
                       color: rulesColor,
-                      width: rulesLength || (props.width || totalWidth) + 11,
+                      width:
+                        rulesLength ||
+                        (props.width ||
+                          totalWidth +
+                            Dimensions.get('screen').width -
+                            yAxisLabelWidth) + 11,
                       dashWidth: dashWidth,
                       dashGap: dashGap,
                       type: rulesType,
@@ -2457,7 +2485,11 @@ export const LineChart = (props: propTypes) => {
                       transform: [
                         {
                           translateX:
-                            (props.width ? props.width : totalWidth) - 15,
+                            (props.width
+                              ? props.width
+                              : totalWidth +
+                                Dimensions.get('screen').width -
+                                yAxisLabelWidth) - 15,
                         },
                         {rotateY: '180deg'},
                       ],
@@ -2514,7 +2546,11 @@ export const LineChart = (props: propTypes) => {
                       transform: [
                         {
                           translateX:
-                            (props.width ? props.width : totalWidth) - 15,
+                            (props.width
+                              ? props.width
+                              : totalWidth +
+                                Dimensions.get('screen').width -
+                                yAxisLabelWidth) - 15,
                         },
                         {rotateY: '180deg'},
                       ],
@@ -3784,6 +3820,7 @@ export const LineChart = (props: propTypes) => {
             position: 'absolute',
             bottom: stepHeight * -0.5 - 60, //stepHeight * -0.5 + xAxisThickness,
             paddingRight: 100,
+            minWidth: Dimensions.get('screen').width - yAxisLabelWidth,
           },
           props.width && {width: props.width + 10},
         ]}>
